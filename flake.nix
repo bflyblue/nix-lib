@@ -12,6 +12,6 @@
           lib = pkgs.lib;
       in {
         lib = import ./lib { inherit pkgs lib; };
-      };
+      }
     );
 }
