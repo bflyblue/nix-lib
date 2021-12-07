@@ -11,7 +11,7 @@
       let pkgs = nixpkgs.legacyPackages.${system};
           lib = pkgs.lib;
       in {
-        lib = import ./lib { inherit pkgs lib; };
+        lib = import ./lib.nix { inherit pkgs lib; };
       }
     );
 }
