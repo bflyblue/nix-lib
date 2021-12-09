@@ -48,7 +48,7 @@ in {
       runAsRoot = ''
         ${pkgs.runtimeShell}
         ln -s /usr/bin/sh /bin/sh
-        cp ${noLibPath "bootstrap" bootstrap} /var/runtime/bootstrap
+        cp ${unsetLdLibraryPath "bootstrap" bootstrap} /var/runtime/bootstrap
       '';
       config = {
         EntryPoint = [ "/lambda-entrypoint.sh" ];
