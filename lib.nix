@@ -33,7 +33,7 @@ let lines = file: lib.splitString "\n" (builtins.readFile file);
       #!/bin/sh
       unset LD_LIBRARY_PATH
       exec ${program} "$@"
-    ''; 
+    '';
 
 in {
   # Helper for mach-nix requirements. It looks for includes of the form "-r filename.txt" and recursively
@@ -41,9 +41,9 @@ in {
   requirements = file: builtins.concatStringsSep "\n" (requires file);
 
   # Build a custom AWS Lambda docker container.
-  buildLambdaImage = { name, contents, bootstrap }:
+  buildLambdaImage = { name, tag, contents, bootstrap }:
     pkgs.dockerTools.buildImage {
-      inherit name contents;
+      inherit name tag contents;
       fromImage = awsLambdaProvided;
       runAsRoot = ''
         ${pkgs.runtimeShell}
